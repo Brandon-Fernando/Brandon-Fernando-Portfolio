@@ -1,95 +1,197 @@
+'use client'
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useCallback, useEffect, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 export default function Home() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback((index) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    });
+  }, [emblaApi]);
+
+
+
+  const [selectedProject, setSelectedProject] = useState("AI Flashcards");
+
+  const datas = {
+    "AI Flashcards": {
+      url:"",
+      github: "https://github.com/Brandon-Fernando/Flashcard-SaaS"
+    },
+    "15 Or Less Game": {
+      url: "",
+      github: ""
+    },
+    "Pantry Tracker": {
+      url: "", 
+      github: "https://github.com/Brandon-Fernando/Inventory-Tracker"
+    },
+    "Rate My Professor Chatbot": {
+      url: "", 
+      github: ""
+    },
+    "AI Customer Support": {
+      url: "", 
+      github: "https://github.com/Brandon-Fernando/chatsupport"
+    },
+    "2048 Game": {
+      url: "", 
+      github: "https://github.com/Brandon-Fernando/2048-Game-Application"
+    },
+  };
+
+  const handleProjectChange = (project) => {
+    setSelectedProject(project);
+  };
+
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      {/* Header */}
+      <div className={styles.header}>
+        <div>
+          <img className={styles.logo} src="/logo.png" alt="logo" />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className={styles.links}>
+          <ul>
+            <li>About</li>
+            <li>Skills</li>
+            <li>Projects</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </div>
+
+      
+      {/* Hero */}
+      <div className={styles.hero}>
+        <div className={styles.layer_one}>
+          <h1>Brandon</h1>
+          <img src="/star.png" alt="star" />
+        </div>
+        <div className={styles.layer_two}>
+          <h1>Fernando</h1>
+        </div>
+      </div>
+        
+
+      {/* Marquee Divider */}
+      <div class={styles.marqueeBox}>
+        <div class={styles.marqueeWrapper}>
+          <div class={styles.marqueeContent}>
+            <span className={styles.marqueeItem}>Front-End Developer</span>
+            <img className={styles.marqueeItem} src="/star2.png" alt="star" />
+            <span className={styles.marqueeItem}>Designer</span>
+            <img className={styles.marqueeItem} src="/star2.png" alt="star" />
+            <span className={styles.marqueeItem}>Web Developer</span>
+            <img className={styles.marqueeItem} src="/star2.png" alt="star" />
+            <span className={styles.marqueeItem}>Front-End Developer</span>
+            <img className={styles.marqueeItem} src="/star2.png" alt="star" />
+            <span className={styles.marqueeItem}>Designer</span>
+            <img className={styles.marqueeItem} src="/star2.png" alt="star" />
+            <span className={styles.marqueeItem}>Web Developer</span>
+            <img className={styles.marqueeItem} src="/star2.png" alt="star" />
+        </div>
+      </div>
     </div>
+
+
+    {/* About */}
+    <div class={styles.about}>
+      <div class={styles.aboutInfo}> 
+        <h1>About</h1>
+        <p>Senior at Rutgers University with a blend of skills ranging from software development and team collaboration. Currently seeking opportunities to gain valuable experience within the technology space and grow personally and professionally.</p>
+        <button>Resume</button>     
+      </div>
+      <div class={styles.headshot}>
+        <img src="/headshot.png" alt="headshot" />
+      </div>
+    </div>
+
+
+    {/* Projects */}
+    <h1 className={styles.pTitle}>Projects</h1>
+    <div id="projects" className={styles.projects}>
+      <div id="left-zone" className={styles.leftZone}>
+        <ul className={styles.list}>
+          {Object.keys(datas).map((project) => (
+            <li key={project} className={styles.item}>
+              <input
+                type="radio"
+                id={`radio_${project}`}
+                name="basic_carousel"
+                value={project}
+                checked={selectedProject === project}
+                onChange={() => handleProjectChange(project)}
+              />
+              <label htmlFor={`radio_${project}`} className={styles[`label_${project}`]}>
+                {project}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div id="middle-border" className={styles.middleBorder}></div>
+
+      <div id="right-zone" className={styles.rightZone}>
+        {Object.keys(datas).map((project) => (
+          <div
+            key={project}
+            className={`${styles.content} ${
+              selectedProject === project ? styles.active : styles.inactive
+            } ${styles[`content_${project}`]}`}
+          >
+            
+            <div className={styles.starWrapper}>
+              <img src="/star.png" alt="star" className={styles.starImage} />
+              <span className={styles.starText}>{project}</span>
+            </div>
+            <div className={styles.linkContainer}>
+            
+
+              <a href={datas[project].github} target="_blank" rel="noopener noreferrer">
+                <button className={styles.siteLink}>Visit Site</button>
+              </a>
+              <i className={`fa-brands fa-github ${styles.githubIcon}`}></i>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    
+    {/* Skills */}
+    <h1 className={styles.sTitle}>Skills</h1>
+    <div className={styles.skills}>
+      
+    </div>
+    
+      
+  </div>
   );
 }
