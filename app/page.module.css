@@ -341,3 +341,37 @@
   font-family: 'Zen Dots', sans-serif;
   font-size: 50px;
 }
+
+
+
+.skillsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 0.15fr); 
+  justify-content: center; 
+  align-items: center;
+  gap: 40px; 
+  margin-bottom: 200px;
+}
+
+.gridItem { 
+  text-align: center;
+  
+}
+
+
+
+.iconWrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;  
+  height: 100px;
+  background-color: black;  
+  border-radius: 50%;  
+}
+
+
+.icon {
+  font-size: 42px; 
+  color: white;  
+}

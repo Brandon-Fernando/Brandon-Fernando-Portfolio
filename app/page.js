@@ -3,38 +3,10 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 export default function Home() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState([]);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const scrollTo = useCallback((index) => {
-    if (emblaApi) emblaApi.scrollTo(index);
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    setScrollSnaps(emblaApi.scrollSnapList());
-    emblaApi.on("select", () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap());
-    });
-  }, [emblaApi]);
-
-
-
   const [selectedProject, setSelectedProject] = useState("AI Flashcards");
 
   const datas = {
@@ -187,11 +159,51 @@ export default function Home() {
     
     {/* Skills */}
     <h1 className={styles.sTitle}>Skills</h1>
-    <div className={styles.skills}>
+    
+    <div className={styles.skillsContainer}>
+      <div className={styles.gridItem}>
+        <div className={styles.iconWrapper}>
+          <i className={`fa-brands fa-java fa-beat ${styles.icon}`}></i>
+        </div>
+      </div>
+
+      <div className={styles.gridItem}>
+        <div className={styles.iconWrapper}>
+          <i className={`fa-brands fa-react fa-beat ${styles.icon}`}></i>
+        </div>
+      </div>
       
+      <div className={styles.gridItem}>
+        <div className={styles.iconWrapper}>
+          <i className={`fa-brands fa-python fa-beat ${styles.icon}`}></i>
+        </div>
+      </div>
+      
+      <div className={styles.gridItem}>
+        <div className={styles.iconWrapper}>
+          <i className={`fa-solid fa-database fa-beat ${styles.icon}`}></i>
+        </div>
+      </div>
+    
+      <div className={styles.gridItem}>
+        <div className={styles.iconWrapper}>
+          <i className={`fa-brands fa-html5 fa-beat ${styles.icon}`}></i>
+        </div>
+      </div>
+
+      <div className={styles.gridItem}>
+        <div className={styles.iconWrapper}>
+          <i className={`fa-brands fa-css3-alt fa-beat ${styles.icon}`}></i>
+        </div>
+      </div>
+
+      <div className={styles.gridItem}>
+        <div className={styles.iconWrapper}>
+          <i className={`fa-brands fa-js fa-beat ${styles.icon}`}></i>
+        </div>
+      </div>
     </div>
     
-      
   </div>
   );
 }
