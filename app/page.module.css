@@ -35,6 +35,16 @@
   font-size: 18px;
 }
 
+.links a{
+  color: black;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline; 
+}
+
+
 
 /* Hero */
 .hero {
@@ -114,6 +124,8 @@
     transform: translateX(0%); 
   }
 }
+
+
 
 
 /* About */
@@ -327,6 +339,7 @@
 .githubIcon {
   font-size: 3rem; 
   margin-top: 10px;
+  color: black;
 }
 
 
@@ -343,21 +356,25 @@
 }
 
 
-
 .skillsContainer {
   display: grid;
-  grid-template-columns: repeat(4, 0.15fr); 
-  justify-content: center; 
-  align-items: center;
-  gap: 40px; 
-  margin-bottom: 200px;
+  grid-template-columns: repeat(8, 100px); /* Fixed width columns */
+  grid-template-rows: 50% 50%;
+  padding: 10px;
+  grid-gap: 2px;
+  justify-content: center;
+  margin-bottom: 70px;
 }
 
-.gridItem { 
+.gridItem {
+  padding: 20px;
   text-align: center;
-  
+  grid-column: span 2
 }
 
+.gridItem:nth-child(5) {
+  grid-column: 2 / span 2;
+}
 
 
 .iconWrapper {
@@ -374,4 +391,204 @@
 .icon {
   font-size: 42px; 
   color: white;  
+}
+
+
+/* Contact */
+.contactContainer {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0 20px 0; /* Adjust bottom padding as needed */
+}
+
+.contactTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  font-family: 'Zen Dots', sans-serif;
+  font-size: 50px;
+  color: white;
+
+}
+
+.alt {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px; /* Adjust the gap between columns */
+  color: white;
+  padding-bottom: 50px;
+  
+}
+
+.alt dt {
+  font-family: 'Zen Dots', sans-serif;
+  color: #1E4AD3;
+}
+
+.alt dd {
+  font-family: 'Zen Dots', sans-serif;
+  color: white;
+  margin: 0; 
+}
+
+.iconLinks{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding-bottom: 50px;
+}
+
+.githubIconF{
+  font-size: 3rem; 
+  color: #1E4AD3;
+}
+
+.linkedinIconF{
+  font-size: 3rem; 
+  color: #1E4AD3;
+}
+
+.copyright{
+  font-family: 'Zen Dots', sans-serif;
+  font-size: 0.8em;
+  text-align: center;
+  color: white;
+  margin-top: 1em;
+}
+
+
+@media (max-width: 393px) {
+  /* Header */
+  .header {
+    padding-left: 10px; 
+    padding-right: 10px; 
+  }
+
+  .logo {
+    width: 30px; 
+  }
+
+  .links ul {
+    display: flex; 
+    gap: 10px; 
+    padding: 0;
+    margin: 0;
+  }
+
+  .links li {
+    font-size: 10px; 
+  }
+
+  /* Hero */
+  .layer_one {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding-left: 15px;
+    margin: 0;
+    padding-bottom: 0;
+  }
+  
+  .layer_one h1{
+    font-family: 'Zen Dots', sans-serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .layer_one img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+  }
+  
+  .layer_two {
+    display: flex;
+    justify-content: left;
+    padding-left: 40px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  
+  .layer_two h1{
+    font-family: 'Zen Dots', sans-serif;
+    font-size: 30px;
+    margin-top: 0;
+  }
+
+  .marqueeBox {
+    width: 100%; 
+    overflow: hidden; 
+    background: #1E4AD3; 
+    border: 4px solid black; 
+    position: relative; 
+  }
+  
+  .marqueeWrapper {
+    display: flex;
+    animation: slide 15s linear infinite; 
+  }
+  
+  .marqueeContent {
+    display: flex;
+    align-items: center;
+  }
+  
+  .marqueeItem {
+    font-family: 'Zen Dots', sans-serif;
+    color: white;
+    margin-right: 100px;
+    font-size: 20px;
+    padding: 1px;
+    white-space: nowrap;
+  }
+
+  /* About */
+  .about {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding-left: 10px;
+    margin-top: 100px;
+    gap: 5%;
+    border: 1px solid green;
+  }
+  
+  .aboutInfo {
+    width: 40px;
+  }
+  
+  .aboutInfo h1 {
+    font-family: 'Zen Dots', sans-serif;
+    font-size: 35px;
+    margin-bottom: 0;
+  }
+  
+  .aboutInfo p {
+    font-size: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    font-family: 'Zen Dots', sans-serif;
+  }
+  
+  .aboutInfo button {
+    font-family: 'Zen Dots', sans-serif;
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 25px;
+    border-radius: 50px;
+  }
+
+  .headshot img {
+    width: 100px; 
+    height: auto; 
+  }
+
+  
+
 }

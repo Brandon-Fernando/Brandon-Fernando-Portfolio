@@ -16,24 +16,16 @@ export default function Home() {
     },
     "15 Or Less Game": {
       url: "",
-      github: ""
+      github: "https://github.com/Jaehoonoo/guess-game"
     },
     "Pantry Tracker": {
       url: "", 
       github: "https://github.com/Brandon-Fernando/Inventory-Tracker"
     },
-    "Rate My Professor Chatbot": {
-      url: "", 
-      github: ""
-    },
     "AI Customer Support": {
       url: "", 
       github: "https://github.com/Brandon-Fernando/chatsupport"
-    },
-    "2048 Game": {
-      url: "", 
-      github: "https://github.com/Brandon-Fernando/2048-Game-Application"
-    },
+    }
   };
 
   const handleProjectChange = (project) => {
@@ -50,10 +42,18 @@ export default function Home() {
 
         <div className={styles.links}>
           <ul>
-            <li>About</li>
-            <li>Skills</li>
-            <li>Projects</li>
-            <li>Contact</li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#projects">Projects</a>
+            </li>
+            <li>
+              <a href="#skills">Skills</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -93,11 +93,13 @@ export default function Home() {
 
 
     {/* About */}
-    <div class={styles.about}>
+    <div id="about" class={styles.about}>
       <div class={styles.aboutInfo}> 
         <h1>About</h1>
         <p>Senior at Rutgers University with a blend of skills ranging from software development and team collaboration. Currently seeking opportunities to gain valuable experience within the technology space and grow personally and professionally.</p>
-        <button>Resume</button>     
+        <a href="/Brandon_Fernando_Resume.pdf" download="Brandon_Fernando_Resume.pdf">
+          <button>Download Resume</button>     
+        </a>
       </div>
       <div class={styles.headshot}>
         <img src="/headshot.png" alt="headshot" />
@@ -106,8 +108,8 @@ export default function Home() {
 
 
     {/* Projects */}
-    <h1 className={styles.pTitle}>Projects</h1>
-    <div id="projects" className={styles.projects}>
+    <h1 id="projects" className={styles.pTitle}>Projects</h1>
+    <div className={styles.projects}>
       <div id="left-zone" className={styles.leftZone}>
         <ul className={styles.list}>
           {Object.keys(datas).map((project) => (
@@ -147,9 +149,11 @@ export default function Home() {
             
 
               <a href={datas[project].github} target="_blank" rel="noopener noreferrer">
-                <button className={styles.siteLink}>Visit Site</button>
+                <button className={styles.siteLink}>View GitHub</button>
               </a>
-              <i className={`fa-brands fa-github ${styles.githubIcon}`}></i>
+              {/* <a href={datas[project].github} target="_blank" rel="noopener noreferrer">
+                <i className={`fa-brands fa-github ${styles.githubIcon}`}></i>
+              </a> */}
             </div>
           </div>
         ))}
@@ -158,7 +162,7 @@ export default function Home() {
 
     
     {/* Skills */}
-    <h1 className={styles.sTitle}>Skills</h1>
+    <h1 id="skills" className={styles.sTitle}>Skills</h1>
     
     <div className={styles.skillsContainer}>
       <div className={styles.gridItem}>
@@ -202,6 +206,35 @@ export default function Home() {
           <i className={`fa-brands fa-js fa-beat ${styles.icon}`}></i>
         </div>
       </div>
+    </div>
+
+
+    {/* Contact */}
+    <div id="contact" className={styles.contactContainer}>
+      <div className={styles.contactTitle}>Contact</div>
+      <dl className={styles.alt}>
+								<dt>Address</dt>
+								<dd>39 Alvin Sloan Avenue &bull; Washington, NJ 07882 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(908) 283-0948 </dd>
+								<dt>Email</dt>
+								<dd>brandonjfernando@yahoo.com</dd>
+			</dl>
+
+      <div className={styles.iconLinks}>
+        <div>
+          <a href={"https://github.com/Brandon-Fernando"} target="_blank" rel="noopener noreferrer">
+            <i className={`fa-brands fa-github ${styles.githubIconF}`}></i>
+          </a>
+        </div>
+        <div>
+          <a href={"https://www.linkedin.com/in/brandon-fernando-b5741229b/"} target="_blank" rel="noopener noreferrer">
+            <i className={`fa-brands fa-linkedin ${styles.linkedinIconF}`}></i>
+          </a>
+        </div>
+      </div>
+
+      <p className={styles.copyright}>&copy; 2024 Brandon Fernando</p>
     </div>
     
   </div>
